@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Profil Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Profil Perusahaan XYZ</h1>
+        <p>Inovasi dan Solusi Digital Sejak 2020</p>
+    </header>
+
+    <main class="container">
+        <section id="profil-utama">
+            <h2>Tentang Kami</h2>
+            <p>PT. XYZ adalah perusahaan teknologi yang berfokus pada pengembangan aplikasi web dan layanan konsultasi IT. Kami berkomitmen untuk memberikan solusi yang efisien dan berdampak.</p>
+            <button id="btn-tampilkan-visi">Tampilkan Visi & Misi</button>
+        </section>
+        
+        <section id="detail-visi" class="detail-tersembunyi">
+            <h3>Visi</h3>
+            <p id="visi-teks">Menjadi pemimpin pasar dalam solusi teknologi digital di Asia Tenggara.</p>
+            
+            <h3>Misi</h3>
+            <ul>
+                <li>Mengembangkan produk inovatif yang relevan dengan kebutuhan pasar.</li>
+                <li>Membangun tim yang berintegritas dan profesional.</li>
+                <li>Memberikan layanan terbaik kepada setiap klien.</li>
+            </ul>
+        </section>
+        
+        <hr>
+
+        <section id="kontak">
+            <h2>Hubungi Kami</h2>
+            <p>Email: info@xyz.co.id</p>
+            <p>Telepon: (021) 123-4567</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PT. XYZ. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.hero {
+    background-color: #007bff;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+}
+
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #343a40;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: square;
+    padding-left: 20px;
+}
+
+/* Gaya untuk Tombol */
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Kelas yang akan diubah oleh JavaScript */
+.detail-tersembunyi {
+    display: none; /* Menyembunyikan elemen secara default */
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40;
+    color: white;
+    margin-top: 40px;
+}document.addEventListener('DOMContentLoaded', function() {
+    // 1. Ambil elemen-elemen yang dibutuhkan dari DOM
+    const btnTampilkanVisi = document.getElementById('btn-tampilkan-visi');
+    const detailVisiSection = document.getElementById('detail-visi');
+    
+    // 2. Tambahkan event listener pada tombol
+    btnTampilkanVisi.addEventListener('click', function() {
+        
+        // Cek apakah bagian detail sedang tersembunyi
+        const isHidden = detailVisiSection.classList.contains('detail-tersembunyi');
+        
+        if (isHidden) {
+            // Jika tersembunyi, tampilkan dan ubah teks tombol
+            detailVisiSection.classList.remove('detail-tersembunyi');
+            btnTampilkanVisi.textContent = 'Sembunyikan Visi & Misi';
+        } else {
+            // Jika sudah tampil, sembunyikan dan kembalikan teks tombol
+            detailVisiSection.classList.add('detail-tersembunyi');
+            btnTampilkanVisi.textContent = 'Tampilkan Visi & Misi';
+        }
+
+        // Contoh modifikasi konten: Mengubah teks visi
+        const visiTeks = document.getElementById('visi-teks');
+        if (isHidden) {
+             visiTeks.innerHTML = '✨ **Menjadi pemimpin pasar dalam solusi teknologi digital di Asia Tenggara (Diperbarui!).**';
+        } else {
+             visiTeks.innerHTML = 'Menjadi pemimpin pasar dalam solusi teknologi digital di Asia Tenggara.';
+        }
+    });
+
+    // 3. (Opsional) Log untuk memastikan script terhubung
+    console.log("Script.js berhasil dimuat dan terhubung.");
+});
